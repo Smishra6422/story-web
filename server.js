@@ -14,14 +14,11 @@ const storyRoutes = require("./routes/story");
 
 //DB Connection
 mongoose
-  .connect(
-    "mongodb+srv://taskapp:MishrA6422@cluster0.fivla.mongodb.net/blog?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    }
-  )
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => {
     console.log("DB CONNECTED");
   });
