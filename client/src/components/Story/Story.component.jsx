@@ -15,7 +15,7 @@ const Story = ({ match }) => {
     getStory(user._id, match.params.storyId, token)
       .then((result) => {
         setStory(result);
-        const socket = openSocket("http://localhost:5002/");
+        const socket = openSocket("localhost:5002");
         socket.emit("visit", {
           storyId: match.params.storyId,
           userId: user._id,
@@ -32,7 +32,7 @@ const Story = ({ match }) => {
         console.log(error.message);
       });
     return () => {
-      const socket = openSocket("http://localhost:5002/");
+      const socket = openSocket("localhost:5002");
       socket.emit("leave", {
         storyId: match.params.storyId,
         userId: user._id,
